@@ -7,7 +7,7 @@ using System.Collections;
 public class adsScript : MonoBehaviour
 {
     public static adsScript Ads;
-    private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
+    private string _adUnitId = "ca-app-pub-xxxxxxxxxxxxxx/xxxxxxxxx";
     private InterstitialAd _interstitialAd;
     public static int adsRemover;//ads olib tashlansa Remover 1 bo'ladi
     public void Start()
