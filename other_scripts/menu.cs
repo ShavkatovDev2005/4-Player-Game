@@ -32,17 +32,20 @@ public class menu : MonoBehaviour
     [SerializeField] GameObject settings;
     [SerializeField] GameObject menu_camera;
     int selected_game;
-    void Start()
+    void Awake()
     {
-        coin.text = market.coin.ToString();
-        settings.SetActive(false);//ayar menyusunu kapat
         for (int i = 0; i < modlar.Length; i++)//gereksiz sahneleri kapat
         {
             modlar[i].SetActive(false);
         }
         modlar[0].SetActive(true);
-        
-        if (Application.internetReachability == NetworkReachability.NotReachable && PlayerPrefs.GetInt("adsRemove",0)==0)//internet baglantisini kontrol eder
+    }
+    void Start()
+    {
+        coin.text = market.coin.ToString();
+        settings.SetActive(false);
+
+        if (Application.internetReachability == NetworkReachability.NotReachable && PlayerPrefs.GetInt("adsRemove",0)==0)//check internet connection
         {
             menu_camera.transform.GetChild(2).gameObject.SetActive(true);
         }
@@ -103,11 +106,15 @@ public class menu : MonoBehaviour
 
         if (player_sayisi==1)
         {
-            take_NPC(true);
+            take_NPC(true);//take NPC
+        }
+        else if (player_sayisi==4)
+        {
+            take_NPC(false);//don't take NPC
         }
         else
         {
-            modlara_gecis(5);
+            modlara_gecis(5);//ask about NPC
         }
     }
     public void take_NPC(bool NPC)
@@ -120,7 +127,6 @@ public class menu : MonoBehaviour
         if (!game_scripts.fazla_oyun)
         {
             kazanilan_para = 0;
-            audioSource.PlayOneShot(click);
             SceneManager.LoadScene(2);
         }
         else{
@@ -130,7 +136,6 @@ public class menu : MonoBehaviour
 
     public void modlara_gecis(int _mod)//mod(canvas) secme islemi
     {
-        audioSource.PlayOneShot(click);
         for (int i = 0; i < modlar.Length; i++)
         {
             if (modlar[i].activeSelf)  // Eğer mod aktifse
@@ -143,12 +148,10 @@ public class menu : MonoBehaviour
     }
     public void telegram()
     {
-        audioSource.PlayOneShot(click);
         Application.OpenURL(my_telegram);
     }
     public void instagram()
     {
-        audioSource.PlayOneShot(click);
         Application.OpenURL(my_instagram);
     }
     
@@ -161,7 +164,6 @@ public class menu : MonoBehaviour
     }
     public void play_tank(int arena)
     {
-        audioSource.PlayOneShot(click);
         other_setting_tank.arena=arena;//tank arena sec
         oyunSecim1(0);
     }
@@ -179,7 +181,6 @@ public class menu : MonoBehaviour
     {
         selected_game++;
         game_scripts.game_numbers.Add(count);//oyunleri liste ekle
-        audioSource.PlayOneShot(click);
         if (selected_game>game_scripts.kacKezOynariz)
         {
             winner_menu_script.players_count = new int[4];
@@ -188,7 +189,6 @@ public class menu : MonoBehaviour
     }
     public void random_button()//oyunu random olarak secer
     {
-        audioSource.PlayOneShot(click);
         for (int i = 0; i < game_scripts.kacKezOynariz; i++)
         {
             int a = Random.Range(0,12);//burada mod eklendigi zaman sayi arttirilacak
@@ -199,14 +199,17 @@ public class menu : MonoBehaviour
     }
     public void setting_button()
     {
-        audioSource.PlayOneShot(click);
         settings.SetActive(!settings.activeInHierarchy);
     }
 #endregion
 
-    public void CheckInternet()
+    public void Button_Audio()
     {
         audioSource.PlayOneShot(click);
+    }
+
+    public void CheckInternet()
+    {
         if (Application.internetReachability != NetworkReachability.NotReachable)
         {
            menu_camera.transform.GetChild(2).gameObject.SetActive(false);
