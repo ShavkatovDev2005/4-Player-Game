@@ -8,8 +8,7 @@ public class karakters : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip click;
-    [SerializeField] AudioClip sotibOldi;
-    [SerializeField] AudioClip sotibOlmadi;
+    [SerializeField] AudioClip buying_audio,not_buying_audio;
     [SerializeField] Material player_color;
     [SerializeField] Material[] players_material;
     
@@ -29,8 +28,9 @@ public class karakters : MonoBehaviour
         tank_string= PlayerPrefs.GetString("tank_string","111100000000000");//15 tank
         knife_string= PlayerPrefs.GetString("knife_string","11110000000");//11 knife
         color_string= PlayerPrefs.GetString("color_string","111100000000");//12 color
-        // dizisindeki tüm sprite'leri listeyeekleyelim
+
         load_color();
+
         playerSelectButton[0].transform.GetChild(1).gameObject.SetActive(true);//tanlangan player buttoni
     }
 #region tank
@@ -51,7 +51,7 @@ public class karakters : MonoBehaviour
 
             if (tank_string[secilen]=='1')
             {
-                audioSource.PlayOneShot(click);//ovoz
+                audioSource.PlayOneShot(click);
                 PlayerPrefs.Save(); // Değişiklikleri kaydet
                 return;//eger tank onceden satin alindiyse return
             }
@@ -61,11 +61,11 @@ public class karakters : MonoBehaviour
             tank_string = tank_string.Substring(0, secilen) + '1' + tank_string.Substring(secilen+1);//tank satin alindigini belirtecek
             PlayerPrefs.SetString("tank_string",tank_string); // karakter değeri her değiştiğinde PlayerPrefs'e kaydedilir
             PlayerPrefs.Save();
-            audioSource.PlayOneShot(sotibOldi);//ovoz
+            audioSource.PlayOneShot(buying_audio);
         }
         else 
         {
-            audioSource.PlayOneShot(sotibOlmadi);//ovoz
+            audioSource.PlayOneShot(not_buying_audio);
             market.shop.SetActive(true);  // Yetersiz coin
             return;
         }
@@ -117,7 +117,7 @@ public class karakters : MonoBehaviour
 
             if (knife_string[secilen]=='1')
             {
-                audioSource.PlayOneShot(click);//ovoz
+                audioSource.PlayOneShot(click);
                 PlayerPrefs.Save(); // Değişiklikleri kaydet
                 return;//eger tank onceden satin alindiyse return
             }
@@ -127,11 +127,11 @@ public class karakters : MonoBehaviour
             knife_string = knife_string.Substring(0, secilen) + '1' + knife_string.Substring(secilen+1);//knife satin alindigini belirtecek
             PlayerPrefs.SetString("knife_string",knife_string); // karakter değeri her değiştiğinde PlayerPrefs'e kaydedilir
             PlayerPrefs.Save();
-            audioSource.PlayOneShot(sotibOldi);//ovoz
+            audioSource.PlayOneShot(buying_audio);
         }
-        else 
+        else
         {
-            audioSource.PlayOneShot(sotibOlmadi);//ovoz
+            audioSource.PlayOneShot(not_buying_audio);
             market.shop.SetActive(true);  // Yetersiz coin
             return;
         }
@@ -161,7 +161,7 @@ public class karakters : MonoBehaviour
         {
             if (player==i)//keraklisini yoqadi
             {
-                transform.GetChild(2).GetChild(PlayerPrefs.GetInt("knife"+i.ToString(),player-1)).transform.GetChild(1).gameObject.SetActive(true);//knife tank
+                transform.GetChild(2).GetChild(PlayerPrefs.GetInt("knife"+i.ToString(),player-1)).transform.GetChild(1).gameObject.SetActive(true);
             }
         }
     }
@@ -184,7 +184,7 @@ public class karakters : MonoBehaviour
 
             if (color_string[secilen]=='1')
             {
-                audioSource.PlayOneShot(click);//ovoz
+                audioSource.PlayOneShot(click);
                 PlayerPrefs.Save(); // Değişiklikleri kaydet
                 return;//eger tank onceden satin alindiyse return
             }
@@ -194,11 +194,11 @@ public class karakters : MonoBehaviour
             color_string = color_string.Substring(0, secilen) + '1' + color_string.Substring(secilen+1);//tank satin alindigini belirtecek
             PlayerPrefs.SetString("color_string",color_string); // karakter değeri her değiştiğinde PlayerPrefs'e kaydedilir
             PlayerPrefs.Save();
-            audioSource.PlayOneShot(sotibOldi);//ovoz
+            audioSource.PlayOneShot(buying_audio);
         }
         else 
         {
-            audioSource.PlayOneShot(sotibOlmadi);//ovoz
+            audioSource.PlayOneShot(not_buying_audio);
             market.shop.SetActive(true);  // Yetersiz coin
             return;
         }
@@ -228,9 +228,9 @@ public class karakters : MonoBehaviour
         for (int i = 1;i <= 5; i++)//keraklisini topadi
         {
             if (player==i)//keraklisini yoqadi
-            {
-                player_color.color = transform.GetChild(1).GetChild(PlayerPrefs.GetInt("color"+i.ToString(),player-1)).GetComponent<Image>().color;//player color degistirme
-                transform.GetChild(1).GetChild(PlayerPrefs.GetInt("color"+i.ToString(),player-1)).transform.GetChild(1).gameObject.SetActive(true);//secilen color
+            {   //change color
+                player_color.color = transform.GetChild(1).GetChild(PlayerPrefs.GetInt("color"+i.ToString(),player-1)).GetComponent<Image>().color;//changing player color
+                transform.GetChild(1).GetChild(PlayerPrefs.GetInt("color"+i.ToString(),player-1)).GetChild(1).gameObject.SetActive(true);//selected color
             }
         }
         players_material[player-1].color = player_color.color;
@@ -243,7 +243,6 @@ public class karakters : MonoBehaviour
 #endregion
     public void player_select(int _player)
     {
-        audioSource.PlayOneShot(click);//ovoz
         playerSelectButton[player-1].transform.GetChild(1).gameObject.SetActive(false);//secilen player fream
         playerSelectButton[_player-1].transform.GetChild(1).gameObject.SetActive(true);//secilen player fream
         player=_player;
@@ -266,6 +265,6 @@ public class karakters : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        PlayerPrefs.Save(); // Değişiklikleri kaydet
+        PlayerPrefs.Save();
     }
 }
