@@ -40,9 +40,12 @@ public class menu : MonoBehaviour
         }
         modlar[0].SetActive(true);
     }
+    void OnEnable()
+    {
+        coin.text = PlayerPrefs.GetInt("Coin", 0).ToString();
+    }
     void Start()
     {
-        coin.text = market.coin.ToString();
         settings.SetActive(false);
 
         if (Application.internetReachability == NetworkReachability.NotReachable && PlayerPrefs.GetInt("adsRemove",0)==0)//check internet connection
@@ -76,10 +79,10 @@ public class menu : MonoBehaviour
         // Hozirgi animatsiya davomiyligini olish
         AnimatorStateInfo stateInfo = coin_animator.GetCurrentAnimatorStateInfo(0);
         float animationTime = stateInfo.length; // Animatsiyaning uzunligi
+        market.Instance.altinEkle(alinacak_para);
 
         yield return new WaitForSeconds(animationTime+1); // Animatsiya tugashini kutish
 
-        market.Instance.altinEkle(alinacak_para);
         coin.text = market.coin.ToString();
         kazanilan_para_object.SetActive(false);
         alinacak_para=0;
