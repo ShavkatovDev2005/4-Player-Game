@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,12 @@ using UnityEngine.UI;
 public class menu_prefab_animation : MonoBehaviour
 {
     [SerializeField] Transform A;
+    [SerializeField] Button restart,home;
+    void OnEnable()
+    {
+        home.onClick.AddListener(() => game_scripts.homeButton());
+        restart.onClick.AddListener(() => game_scripts.restartButton());
+    }
     void Update()
     {
         if (A.gameObject.activeSelf) A.transform.Rotate(0, 0, 10f * Time.deltaTime);// donen isik

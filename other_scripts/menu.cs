@@ -1,9 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class menu : MonoBehaviour
 {
@@ -16,6 +15,7 @@ public class menu : MonoBehaviour
     public static bool NPC_olsun;
     public static int secilen_oyuncu_sayisi;
     public static int secilen_oyuncu_sayisi_botlarla;
+    [SerializeField] GameObject gamescriptsObject;
 
     int alinacak_para;
 
@@ -32,29 +32,16 @@ public class menu : MonoBehaviour
     [SerializeField] GameObject settings;
     [SerializeField] GameObject menu_camera;
     int selected_game;
-    void Awake()
+    void OnEnable()
     {
         for (int i = 0; i < modlar.Length; i++)//gereksiz sahneleri kapat
         {
             modlar[i].SetActive(false);
         }
         modlar[0].SetActive(true);
-    }
-    void OnEnable()
-    {
-        coin.text = PlayerPrefs.GetInt("Coin", 0).ToString();
-    }
-    void Start()
-    {
-        settings.SetActive(false);
 
-        if (Application.internetReachability == NetworkReachability.NotReachable && PlayerPrefs.GetInt("adsRemove",0)==0)//check internet connection
-        {
-            menu_camera.transform.GetChild(2).gameObject.SetActive(true);
-        }
-        else{
-            menu_camera.transform.GetChild(2).gameObject.SetActive(false);
-        }
+        coin.text = PlayerPrefs.GetInt("Coin", 0).ToString();
+        settings.SetActive(false);
 
         if (parayi_ver)
         {
@@ -102,6 +89,11 @@ public class menu : MonoBehaviour
             game_scripts.fazla_oyun=false;
         }
     }
+    public void back_button_gameCount()
+    {
+        if (secilen_oyuncu_sayisi==1 || secilen_oyuncu_sayisi==4) modlara_gecis(1);
+        else modlara_gecis(5);
+    }
 
     public void play_game_4_player(int player_sayisi)
     {
@@ -130,7 +122,7 @@ public class menu : MonoBehaviour
         if (!game_scripts.fazla_oyun)
         {
             kazanilan_para = 0;
-            SceneManager.LoadScene(2);
+            moveTheNextScene();
         }
         else{
             modlara_gecis(4);
@@ -187,7 +179,7 @@ public class menu : MonoBehaviour
         if (selected_game>game_scripts.kacKezOynariz)
         {
             winner_menu_script.players_count = new int[4];
-            SceneManager.LoadScene(2);
+            moveTheNextScene();
         }
     }
     public void random_button()//oyunu random olarak secer
@@ -198,7 +190,7 @@ public class menu : MonoBehaviour
             game_scripts.game_numbers.Add(a);
         }
         winner_menu_script.players_count = new int[4];
-        SceneManager.LoadScene(2);
+        moveTheNextScene();
     }
     public void setting_button()
     {
@@ -210,12 +202,13 @@ public class menu : MonoBehaviour
     {
         audioSource.PlayOneShot(click);
     }
-
-    public void CheckInternet()
+    void moveTheNextScene()
     {
-        if (Application.internetReachability != NetworkReachability.NotReachable)
+        for (int i = 0; i < modlar.Length; i++)//close first scene objects 
         {
-           menu_camera.transform.GetChild(2).gameObject.SetActive(false);
+            modlar[i].SetActive(false);
         }
+        gameObject.SetActive(false);
+        gamescriptsObject.SetActive(true);
     }
 }

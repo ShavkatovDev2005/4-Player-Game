@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+// using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEditor;
 using UnityEngine.EventSystems;
@@ -10,6 +10,11 @@ using System.Linq;
 
 public class game_scripts : MonoBehaviour
 {
+    public delegate void RestartButton();
+    public static RestartButton restartButton;
+    public delegate void HomeButton();
+    public static HomeButton homeButton;
+
     public static game_scripts Instance;
     [SerializeField] GameObject winner_menu;
     public GameObject[] modlar;
@@ -24,17 +29,23 @@ public class game_scripts : MonoBehaviour
     AudioSource audioSource;
     static bool ads_izlensinmi=true;
     public bool oyun_bitti=false;
+    public GameObject ActiveGame;
+    [SerializeField] GameObject menu_Gameobject;
     void Awake()
     {
         Instance=this;
-        audioSource = GetComponent<AudioSource>();
-        for (int i = 0; i < modlar.Length; i++)
-        {
-            modlar[i].SetActive(false);
-        }
+
+        restartButton = restart_button;
+        homeButton = home_button;
     }
-    void Start()
+    void OnEnable()
     {
+        load();
+    }
+    public void load()
+    {
+        audioSource = GetComponent<AudioSource>();
+
         kaybetme_sayisi=0;
         oyuncuSayisi = menu.secilen_oyuncu_sayisi_botlarla;
         if (menu.secilen_oyuncu_sayisi_botlarla==1) hangi_oyuncu_kazandi=0003;
@@ -42,33 +53,34 @@ public class game_scripts : MonoBehaviour
         else if (menu.secilen_oyuncu_sayisi_botlarla==3) hangi_oyuncu_kazandi=0333;
         else if (menu.secilen_oyuncu_sayisi_botlarla==4) hangi_oyuncu_kazandi=3333;
 
-        winner_menu.SetActive(false);
-
-        modlar[TakeAndRemoveFirstItem()].SetActive(true);
+        TakeGameItem();
         adsScript.Ads.LoadInterstitialAd();//reklamni yuklash
     }
-    public void home()
+    public void home_button()
     {
-        SceneManager.LoadScene(1);
+        Destroy(ActiveGame);
+        gameObject.SetActive(false);
+
+        menu_Gameobject.SetActive(true);
     }
     public void restart_button()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        TakeGameItem();
     }
-    int TakeAndRemoveFirstItem()
+    public void TakeGameItem()
     {
+        stopTime=false;
         if (game_numbers.Count == 1)
         {
-            return game_numbers[0];
+            Destroy(ActiveGame);
+            ActiveGame = Instantiate(modlar[game_numbers[0]]);
         }
         else if (game_numbers.Count > 0)
         {
-            int item = game_numbers[0]; // 0. indeksteki öğeyi al
+            Destroy(ActiveGame);
+            ActiveGame = Instantiate(modlar[game_numbers[0]]);
             game_numbers.RemoveAt(0);    // O öğeyi listeden kaldır
-            return item;            // Alınan öğeyi döndür
         }
-        return 0; // Liste boşsa 0 döndür
     }
 
     public void kaybeden_oyuncu(int A)//A==player id. yutqazgan o'yinchini belgilaydi. 3 yutgan,  0,1,2, yutqazgan
@@ -112,7 +124,7 @@ public class game_scripts : MonoBehaviour
 
         if (fazla_oyun)
         {
-            StartCoroutine(winnerMenu(asd));
+            StartCoroutine(winnerMenu());
         }
         else//fazla oyun oynanmadigi zaman
         {
@@ -126,12 +138,11 @@ public class game_scripts : MonoBehaviour
         }
         stopTime=true;
     }
-    IEnumerator winnerMenu(Transform asd)
+    IEnumerator winnerMenu()
     {
         yield return new WaitForSeconds(3);
-        asd.gameObject.SetActive(false);
-        winner_menu.SetActive(true);
-        winner_menu_script.Instance.oyuculari_gorster(hangi_oyuncu_kazandi);
+        GameObject winnermenu = Instantiate(winner_menu);
+        winnermenu.GetComponent<winner_menu_script>().oyuncular_sayisi = hangi_oyuncu_kazandi;
         kacKezOynariz--;//her oyunde puani bir azalt
     }
 }
