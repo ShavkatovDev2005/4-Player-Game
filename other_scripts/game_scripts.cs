@@ -1,12 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.SceneManagement;
 using TMPro;
-using UnityEditor;
-using UnityEngine.EventSystems;
 using System;
-using System.Linq;
 
 public class game_scripts : MonoBehaviour
 {
@@ -35,7 +31,7 @@ public class game_scripts : MonoBehaviour
     {
         Instance=this;
 
-        restartButton = restart_button;
+        restartButton = load;
         homeButton = home_button;
     }
     void OnEnable()
@@ -62,10 +58,6 @@ public class game_scripts : MonoBehaviour
         gameObject.SetActive(false);
 
         menu_Gameobject.SetActive(true);
-    }
-    public void restart_button()
-    {
-        TakeGameItem();
     }
     public void TakeGameItem()
     {
