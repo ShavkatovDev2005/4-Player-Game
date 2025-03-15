@@ -19,14 +19,17 @@ public class game_scripts : MonoBehaviour
     public static List<int> game_numbers = new List<int>();//secilen modlar
     public static int hangi_oyuncu_kazandi;//hangi oyuncu kazandigini hesaplar  1p=3000, 2p=0300, 3p=0030, 4p=0003  ||   3333
     public static bool fazla_oyun;
-    public bool stopTime=false;//menu acildiginde harseyi durduracak
+    public bool stopTime;//menu acildiginde harseyi durduracak
     int kaybetme_sayisi;//onemli
     public Material[] player_materials;
     AudioSource audioSource;
+    [SerializeField] AudioClip go_voice;
     static bool ads_izlensinmi=true;
     public bool oyun_bitti=false;
     public GameObject ActiveGame;
     [SerializeField] GameObject menu_Gameobject;
+    float waiting_time=0;
+    bool start;
     void Awake()
     {
         Instance=this;
@@ -34,14 +37,28 @@ public class game_scripts : MonoBehaviour
         restartButton = load;
         homeButton = home_button;
     }
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    void Update()
+    {
+        if (waiting_time<=2)
+        {
+            waiting_time += Time.deltaTime;
+        }
+        else if (waiting_time>=2 && !start)
+        {
+            start=true;
+            stopTime=false;
+        }
+    }
     void OnEnable()
     {
         load();
     }
     public void load()
     {
-        audioSource = GetComponent<AudioSource>();
-
         kaybetme_sayisi=0;
         oyuncuSayisi = menu.secilen_oyuncu_sayisi_botlarla;
         if (menu.secilen_oyuncu_sayisi_botlarla==1) hangi_oyuncu_kazandi=0003;
@@ -59,9 +76,12 @@ public class game_scripts : MonoBehaviour
 
         menu_Gameobject.SetActive(true);
     }
-    public void TakeGameItem()
+    void TakeGameItem()
     {
-        stopTime=false;
+        start=false;
+        stopTime=true;
+        waiting_time=0;
+        
         if (game_numbers.Count == 1)
         {
             Destroy(ActiveGame);
@@ -100,7 +120,7 @@ public class game_scripts : MonoBehaviour
     public void  RestartSceneOnClick(Transform asd)//o'yin necha marta o'ynalishini boshqaradi
     {
         asd.GetChild(0).GetChild(0).GetChild(1).gameObject.SetActive(false);//pause button
-        Instance?.audioSource.Play();
+        audioSource.Play();
 
         for (int i = 0; i < 4; i++)//hangi oyuncular kazandini gorsterir.   4==oyuncu sayisi
         {
@@ -136,5 +156,9 @@ public class game_scripts : MonoBehaviour
         GameObject winnermenu = Instantiate(winner_menu);
         winnermenu.GetComponent<winner_menu_script>().oyuncular_sayisi = hangi_oyuncu_kazandi;
         kacKezOynariz--;//her oyunde puani bir azalt
+    }
+    public void play_go_voice()
+    {
+        audioSource.PlayOneShot(go_voice);
     }
 }
