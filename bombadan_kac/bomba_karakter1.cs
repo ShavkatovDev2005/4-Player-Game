@@ -1,33 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class bomba_karakter1 : MonoBehaviour
 {
     [SerializeField] FixedJoystick fixedJoystick;
     [SerializeField] Animator animator;
-    public static bool bomba_bende;
+    Rigidbody2D rb;
     float rotationSpeed = 400f;
-
     void Start()
     {
-        if (bombadan_kac_other_script.oyuncu_sec==1)
-        {
-            bomba_bende=true;
-        }
-        else
-        {
-            transform.GetChild(0).gameObject.SetActive(false);
-        }
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        if (game_scripts.Instance.stopTime==true) return;
-        
-        bomba_bende=transform.GetChild(0).gameObject.activeSelf;
 
-        transform.position+= new Vector3(fixedJoystick.Horizontal * 3 * Time.deltaTime,fixedJoystick.Vertical * 3 * Time.deltaTime);
+        if (gameObject.tag == "tagger") transform.GetChild(0).gameObject.SetActive(true);
+        else transform.GetChild(0).gameObject.SetActive(false);
+
+        if (game_scripts.Instance.stopTime==true) return;
+
+
+
+        Vector2 moveDirection = new Vector2(fixedJoystick.Horizontal, fixedJoystick.Vertical);
+        if (moveDirection.magnitude > 0.1f) // Agar joystick harakat qilayotgan bo‘lsa
+        {
+            rb.AddForce(moveDirection * 0.08f * Time.deltaTime);
+        }
+
         RotateCharacter();
     }
     void RotateCharacter()
@@ -47,10 +46,13 @@ public class bomba_karakter1 : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag=="Player" && bomba_bende)
+        if (!transform.GetChild(0).gameObject.activeSelf)
         {
-            transform.GetChild(0).gameObject.SetActive(false);
-            other.transform.GetChild(0).gameObject.SetActive(true);
+            if (other.gameObject.tag == "tagger")
+            {
+                tag = "tagger";
+                other.gameObject.tag = "Player";
+            }
         }
     }
 }
