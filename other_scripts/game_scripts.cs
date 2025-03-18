@@ -94,7 +94,6 @@ public class game_scripts : MonoBehaviour
             game_numbers.RemoveAt(0);    // O öğeyi listeden kaldır
         }
     }
-
     public void kaybeden_oyuncu(int A)//A==player id. yutqazgan o'yinchini belgilaydi. 3 yutgan,  0,1,2, yutqazgan
     {
         // Asl qiymatni olish va stringga aylantirish
