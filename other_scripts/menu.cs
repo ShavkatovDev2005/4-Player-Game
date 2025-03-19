@@ -16,7 +16,6 @@ public class menu : MonoBehaviour
     public static int secilen_oyuncu_sayisi;
     public static int secilen_oyuncu_sayisi_botlarla;
     [SerializeField] GameObject gamescriptsObject;
-
     int alinacak_para;
 
     [Header("coin")]
