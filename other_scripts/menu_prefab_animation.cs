@@ -20,6 +20,7 @@ public class menu_prefab_animation : MonoBehaviour
     public void open_animation()
     {
         game_scripts.Instance.stopTime=true;
+        
         transform.GetChild(5).gameObject.SetActive(true);//pausemenu
         transform.GetChild(6).gameObject.SetActive(false);//pause button
         
