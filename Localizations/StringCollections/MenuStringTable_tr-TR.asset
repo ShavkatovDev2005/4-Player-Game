@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MenuStringTable_tr-TR
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: tr-TR
+  m_SharedData: {fileID: 11400000, guid: 433cbdc0a5cf8409880df595d90b9fbb, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 27748458496
+    m_Localized: "H\u0131zl\u0131 Oyun"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 438177882112
+    m_Localized: Turnuva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1088538271744
+    m_Localized: Mag'aza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 132684469755904
+    m_Localized: "Ma\u011Faza"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 146082402131968
+    m_Localized: "Oyun say\u0131s\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 147995747147776
+    m_Localized: "Oyuncu say\u0131s\u0131"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362294717440000
+    m_Localized: Botlarla Oyna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 362743654768640
+    m_Localized: "B\xF6lge se\xE7"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 488232075649024
+    m_Localized: Renk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 488786516500480
+    m_Localized: "B\u0131\xE7ak"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 489205514887168
+    m_Localized: Tank
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

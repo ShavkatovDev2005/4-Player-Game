@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: 458b93b8a242a499c9cb92668bf9f6bc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_0
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 0
+        width: 759
+        height: 299
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebcafc78973fc4333877d80bf016179b
+      internalID: 615688223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1119
+        width: 740
+        height: 329
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b9c1f0df60a4d9d82d8cdfae007fd2
+      internalID: 69169759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_2
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 740
+        width: 753
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 406d4727c4d6648899dd6915136be7f3
+      internalID: -285563844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_3
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 360
+        width: 756
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5278448580f7643ebb0b419233d36160
+      internalID: 1961650853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_0: 615688223
+      DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_1: 69169759
+      DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_2: -285563844
+      DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_3: 1961650853
+      DALL_E_2025-01-04_10.44.12_-_A_top-down_view_of_four_futuristic_and_sleek_sports_cars_without_any_background._Each_car_is_unique_in_design__viewed_directly_from_above__with_a_tran-removebg_4: -719398824
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

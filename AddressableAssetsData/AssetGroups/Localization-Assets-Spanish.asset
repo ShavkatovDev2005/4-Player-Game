@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Spanish
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Spanish
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 792037de36d664329a85bee7cf060732
+  m_SerializeEntries:
+  - m_GUID: 52f75a62e45894706b293d66da90c4fd
+    m_Address: pngwing.com-5
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-es-ES
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: 9e442c00dbe084327807e5791a3df162, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9e73211ea4bab494788fed9935fbcdf1, type: 2}
+    - {fileID: 11400000, guid: 62a9508e91dff4386a16e6c9136f068d, type: 2}
